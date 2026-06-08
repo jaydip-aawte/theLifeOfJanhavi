@@ -22,7 +22,32 @@ A digital emotional scrapbook built with love for Janhavi — a handcrafted digi
 | Marathi + Emoji support (`utf8mb4`, Noto Sans Devanagari) | ✅ |
 | SEO meta + Open Graph + lazy loading (Intersection Observer) | ✅ |
 
-Modules deferred to **Phase 2**: Quiz, Wish modules, Love Treasure, Fun Area, Suggestions, advanced CRUD, Excel import.
+---
+
+## 🎨 Phase 2 — Content Management System
+
+Full admin-managed CMS extending the Phase 1 architecture. Every module supports Create / Read / Update / Delete, **soft delete**, active/inactive toggle, and **rank ordering** (move up/down). All forms use CSRF + server-side validation + PDO prepared statements + `utf8mb4`.
+
+| Module | Admin CRUD | Public page | Style |
+|--------|-----------|-------------|-------|
+| Wish Photo Wall (`wish_photo`) | ✅ | `/wish-photo` | Polaroid cards |
+| Wish Video Wall (`wish_video`) | ✅ | `/wish-video` | YouTube grid (lazy iframe) |
+| Janhavi Sapkal (`janhavi_sapkal`) | ✅ | `/janhavi-sapkal` | Proud-of-you cards |
+| Janhavi Jaydip (`janhavi_jaydip`) | ✅ | `/janhavi-jaydip` | Placeholder (locked later) |
+| Chatpati Janhavi (`chatpati_janhavi`) | ✅ | `/chatpati-janhavi` | Meme cards |
+
+Cross-cutting features:
+
+- **File upload system** — `UploadService` validates type (`jpg/jpeg/png/webp`) + size, generates a unique filename, stores files in `assets/uploads/{photos,videos,hero,profile,memes}/`, and saves only the relative path in the DB.
+- **Statistics dashboard** — Total Photos / Videos / Wishes / Modules, Active Content count, Last Import.
+- **Admin search** — searches across all content modules (English / Marathi / Emoji).
+- **Bulk actions** — activate / deactivate / delete selected records.
+- **Import framework skeleton** — `ImportService` + controller + upload screen + `import_log` table (extensible; full Excel parsing deferred to a later phase).
+- All public pages load **dynamically from the database** (no hardcoded content) with `loading="lazy"` + Intersection Observer.
+
+**Phase 2 DB tables**: `wish_photo`, `wish_video`, `janhavi_sapkal`, `janhavi_jaydip`, `chatpati_janhavi`, `import_log` — each with `id`, `status`, `rank`, `created_at`, `updated_at` (+ `deleted_at` for soft delete). Import with `database/phase2_schema.sql` then `database/phase2_seed.sql`.
+
+Modules deferred to **future phases**: Quiz, Secret Code, Love Treasure unlock logic, Suggestions, Games, Envelope Letters, Birthday Cake, animations.
 
 ---
 
@@ -70,10 +95,12 @@ project-root/
    'username' => 'youruser_dbuser',
    'password' => 'your-db-password',
    ```
-4. **Set the base URL** in `config/app.php` (`base_url`) to your domain, e.g. `https://janhavi.example.com`.
+4. **Base URL** — nothing to configure. The app **auto-detects** scheme + host + sub-folder from the request, so it works at a domain root, in a sub-folder (e.g. `https://site.com/janhavi`), or on XAMPP (`http://localhost/theLifeOfJanhavi`) with no edits. To force a fixed URL, set the `APP_URL` env var (it always overrides auto-detection).
 5. **Upload**: zip the project contents and upload to `public_html` (or a subfolder) via cPanel *File Manager* → *Upload* → *Extract*.
 6. **Permissions**: make `assets/uploads/` and `assets/music/` writable (`chmod 755`).
 7. Visit your domain. 🎉
+
+> 📦 **Fully self-contained** — all fonts (Poppins, Playfair Display, Dancing Script, Noto Sans Devanagari) are bundled in `assets/fonts/` and loaded locally. No internet/CDN is required at runtime, so styling renders correctly offline and on any machine.
 
 ### Default admin login
 
@@ -92,6 +119,9 @@ Password: admin123
 
 ## 🖥️ Local Development
 
+**XAMPP / Apache (recommended for cPanel parity):** drop the folder into `htdocs/` (e.g. `htdocs/theLifeOfJanhavi`), start Apache + MySQL, import the SQL files via phpMyAdmin, then open `http://localhost/theLifeOfJanhavi/`. The base URL auto-detects the sub-folder — CSS/JS/images load correctly with no config.
+
+**PHP built-in server:**
 ```bash
 # From the project root
 php -S localhost:8000 router.php

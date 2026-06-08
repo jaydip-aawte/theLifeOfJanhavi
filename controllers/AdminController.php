@@ -3,6 +3,12 @@
 require_once __DIR__ . '/../models/Menu.php';
 require_once __DIR__ . '/../models/Setting.php';
 require_once __DIR__ . '/../models/LandingPage.php';
+require_once __DIR__ . '/../models/WishPhoto.php';
+require_once __DIR__ . '/../models/WishVideo.php';
+require_once __DIR__ . '/../models/JanhaviSapkal.php';
+require_once __DIR__ . '/../models/JanhaviJaydip.php';
+require_once __DIR__ . '/../models/ChatpatiJanhavi.php';
+require_once __DIR__ . '/../models/ImportLog.php';
 
 class AdminController extends BaseController
 {
@@ -18,14 +24,38 @@ class AdminController extends BaseController
         $stats = [];
         try {
             $menuModel = new Menu();
-            $landingModel = new LandingPage();
+            $wishPhoto = new WishPhoto();
+            $wishVideo = new WishVideo();
+            $sapkal = new JanhaviSapkal();
+            $jaydip = new JanhaviJaydip();
+            $chatpati = new ChatpatiJanhavi();
+            $importLog = new ImportLog();
+
+            $totalPhotos = $wishPhoto->countAll();
+            $totalVideos = $wishVideo->countAll();
+            $activeContent = $wishPhoto->countActive() + $wishVideo->countActive()
+                + $sapkal->countActive() + $jaydip->countActive() + $chatpati->countActive();
+
+            $recentImport = $importLog->recent(1);
+            $lastImport = !empty($recentImport) ? $recentImport[0]['created_at'] : null;
 
             $stats = [
-                'total_menus'   => $menuModel->count("status = 1"),
-                'landing_pages' => $landingModel->count(),
+                'total_photos'   => $totalPhotos,
+                'total_videos'   => $totalVideos,
+                'total_wishes'   => $totalPhotos + $totalVideos,
+                'total_modules'  => $menuModel->count("status = 1"),
+                'active_content' => $activeContent,
+                'last_import'    => $lastImport,
             ];
         } catch (\Throwable $e) {
-            $stats = ['total_menus' => 0, 'landing_pages' => 0];
+            $stats = [
+                'total_photos'   => 0,
+                'total_videos'   => 0,
+                'total_wishes'   => 0,
+                'total_modules'  => 0,
+                'active_content' => 0,
+                'last_import'    => null,
+            ];
         }
 
         $this->view('admin/dashboard', [

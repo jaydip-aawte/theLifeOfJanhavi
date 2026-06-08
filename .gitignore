@@ -5,6 +5,17 @@ config/local.php
 # Uploaded content (keep folders, ignore files)
 assets/uploads/*
 !assets/uploads/.gitkeep
+!assets/uploads/photos/
+!assets/uploads/videos/
+!assets/uploads/hero/
+!assets/uploads/profile/
+!assets/uploads/memes/
+assets/uploads/photos/*
+assets/uploads/videos/*
+assets/uploads/hero/*
+assets/uploads/profile/*
+assets/uploads/memes/*
+!assets/uploads/**/.gitkeep
 assets/music/*
 !assets/music/.gitkeep
 
@@ -15,6 +26,6 @@ Thumbs.db
 .idea/
 .vscode/
 
-# PHP
-vendor/
+# PHP (Composer dependencies only — NOT the bundled front-end assets in assets/vendor/)
+/vendor/
 composer.lock
