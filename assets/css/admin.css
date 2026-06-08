@@ -124,11 +124,9 @@
     font-size: 0.85rem;
 }
 
-/* ---------- Dashboard Cards ---------- */
+/* ---------- Dashboard Cards ----------
+   Layout via Bootstrap .row/.col; spacing handled by Bootstrap gutters. */
 .dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
@@ -139,6 +137,7 @@
     box-shadow: var(--shadow-soft);
     transition: var(--transition);
     border: 1px solid var(--admin-border);
+    text-align: center;
 }
 
 .dashboard-card:hover {
@@ -343,18 +342,8 @@
         display: flex;
     }
 
-    .dashboard-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
     .login-card {
         padding: 2rem 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr;
     }
 }
 

@@ -6,20 +6,22 @@
         <p class="page-subtitle marathi">Proud Of You — तुझा अभिमान आहे 🌟</p>
 
         <?php if (!empty($records)): ?>
-        <div class="proud-cards">
+        <div class="row g-4 justify-content-center proud-cards">
             <?php foreach ($records as $item): ?>
-            <div class="proud-card">
-                <div class="proud-icon"><?= $item['icon'] ?? '🌟' ?></div>
-                <?php if (!empty($item['image_path'])): ?>
-                <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="proud-image lazy-image" loading="lazy">
-                <?php endif; ?>
-                <h3 class="proud-title"><?= htmlspecialchars($item['title']) ?></h3>
-                <?php if (!empty($item['subtitle'])): ?>
-                <p class="proud-subtitle"><?= htmlspecialchars($item['subtitle']) ?></p>
-                <?php endif; ?>
-                <?php if (!empty($item['description'])): ?>
-                <p class="proud-desc"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
-                <?php endif; ?>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="proud-card h-100">
+                    <div class="proud-icon"><?= $item['icon'] ?? '🌟' ?></div>
+                    <?php if (!empty($item['image_path'])): ?>
+                    <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="proud-image lazy-image" loading="lazy">
+                    <?php endif; ?>
+                    <h3 class="proud-title"><?= htmlspecialchars($item['title']) ?></h3>
+                    <?php if (!empty($item['subtitle'])): ?>
+                    <p class="proud-subtitle"><?= htmlspecialchars($item['subtitle']) ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($item['description'])): ?>
+                    <p class="proud-desc"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
+                    <?php endif; ?>
+                </div>
             </div>
             <?php endforeach; ?>
         </div>

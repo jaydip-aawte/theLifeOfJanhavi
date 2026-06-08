@@ -30,8 +30,8 @@ unset($_SESSION['flash_error'], $_SESSION['flash_success']);
         <label class="select-all-label"><input type="checkbox" id="selectAll"> Select All</label>
     </div>
 
-    <div class="content-table-wrap">
-        <table class="content-table">
+    <div class="content-table-wrap table-responsive">
+        <table class="content-table table table-hover align-middle mb-0">
             <thead>
                 <tr>
                     <th style="width:40px;"><input type="checkbox" id="selectAllHead"></th>

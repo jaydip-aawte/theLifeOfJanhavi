@@ -213,11 +213,10 @@ h1, h2, h3, h4 {
     }
 }
 
-/* ---------- Container ---------- */
+/* ---------- Container ----------
+   Width / responsive max-widths / gutters come from Bootstrap's .container.
+   We only add stacking context so decorative layers sit behind content. */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -286,15 +285,14 @@ h1, h2, h3, h4 {
     border-radius: 2px;
 }
 
-/* ---------- Navigation Cards (Modules) ---------- */
+/* ---------- Navigation Cards (Modules) ----------
+   Layout handled by Bootstrap .row/.col + g-4 gap; we only style the cards. */
 .nav-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
     padding: 1rem 0;
 }
 
 .nav-card {
+    display: block;
     background: var(--white);
     border-radius: var(--radius-lg);
     padding: 2rem 1.5rem;
@@ -498,11 +496,6 @@ h1, h2, h3, h4 {
         font-size: 1.8rem;
     }
 
-    .nav-cards {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 1rem;
-    }
-
     .nav-card {
         padding: 1.5rem 1rem;
     }
@@ -528,10 +521,6 @@ h1, h2, h3, h4 {
 
     .hero-title {
         font-size: 1.8rem;
-    }
-
-    .nav-cards {
-        grid-template-columns: 1fr 1fr;
     }
 
     .section {
@@ -579,12 +568,7 @@ h1, h2, h3, h4 {
 }
 .btn-back:hover { background: var(--rose); color: #fff; transform: translateY(-2px); }
 
-/* Polaroid grid (wish photos) */
-.polaroid-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2rem;
-}
+/* Polaroid grid (wish photos) — layout via Bootstrap .row/.col */
 .polaroid-card {
     background: #fff;
     padding: 1rem 1rem 1.25rem;
@@ -593,7 +577,7 @@ h1, h2, h3, h4 {
     transition: var(--transition);
     transform: rotate(-1deg);
 }
-.polaroid-card:nth-child(even) { transform: rotate(1.5deg); }
+.polaroid-grid > [class*="col"]:nth-child(even) .polaroid-card { transform: rotate(1.5deg); }
 .polaroid-card:hover { transform: rotate(0) translateY(-6px); box-shadow: var(--shadow-hover); }
 .polaroid-photo {
     width: 100%;
@@ -615,12 +599,7 @@ h1, h2, h3, h4 {
 }
 .polaroid-text { color: var(--text-medium); font-size: 0.9rem; line-height: 1.5; }
 
-/* Video grid */
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
-}
+/* Video grid — layout via Bootstrap .row/.col */
 .video-card {
     background: #fff;
     border-radius: var(--radius-md);
@@ -642,12 +621,7 @@ h1, h2, h3, h4 {
 .video-name { font-family: var(--font-handwritten); font-size: 1.4rem; color: var(--rose-dark); }
 .video-text { color: var(--text-medium); font-size: 0.9rem; margin-top: 0.3rem; }
 
-/* Proud cards (Janhavi Sapkal) */
-.proud-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-}
+/* Proud cards (Janhavi Sapkal) — layout via Bootstrap .row/.col */
 .proud-card {
     background: #fff;
     border-radius: var(--radius-lg);
@@ -667,12 +641,7 @@ h1, h2, h3, h4 {
 .proud-subtitle { color: var(--rose); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem; }
 .proud-desc { color: var(--text-medium); font-size: 0.9rem; line-height: 1.6; }
 
-/* Meme cards (Chatpati Janhavi) */
-.meme-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.75rem;
-}
+/* Meme cards (Chatpati Janhavi) — layout via Bootstrap .row/.col */
 .meme-card {
     background: #fff;
     border-radius: var(--radius-md);
@@ -711,5 +680,4 @@ h1, h2, h3, h4 {
 
 @media (max-width: 600px) {
     .page-heading { font-size: 2rem; }
-    .polaroid-grid, .proud-cards, .meme-grid, .video-grid { grid-template-columns: 1fr; }
 }
