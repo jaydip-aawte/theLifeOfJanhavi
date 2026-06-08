@@ -2,18 +2,41 @@
 
 <div class="public-page">
     <div class="container">
-        <h1 class="page-heading handwritten">Love Treasure 💎</h1>
-        <p class="page-subtitle marathi">आमचं खास नातं 💕</p>
+        <h1 class="page-heading handwritten">Janhavi Jaydip 💕</h1>
+        <p class="page-subtitle marathi">आमचं खास नातं 💞</p>
 
-        <div class="locked-section">
-            <div class="lock-icon">🔒</div>
-            <h2 class="handwritten" style="color: var(--rose); font-size: 1.8rem; margin: 1rem 0;">Coming Soon</h2>
-            <p style="color: var(--text-medium); max-width: 400px; margin: 0 auto; line-height: 1.8;">
-                This section holds something very special.
-                <br>It will be unlocked in a future update.
-                <br><span class="marathi">काहीतरी खास तुझ्यासाठी... 💕</span>
-            </p>
+        <?php if (!empty($records)): ?>
+        <div class="row g-4 justify-content-center proud-cards">
+            <?php foreach ($records as $i => $item): ?>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="proud-card h-100 reveal <?= $i % 2 ? 'reveal-right' : 'reveal-left' ?>" data-delay="<?= ($i % 3) + 1 ?>">
+                    <div class="proud-icon">💖</div>
+                    <?php if (!empty($item['image_path'])): ?>
+                    <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="proud-image lazy-image" loading="lazy">
+                    <?php endif; ?>
+                    <h3 class="proud-title"><?= htmlspecialchars($item['title']) ?></h3>
+                    <?php if (!empty($item['subtitle'])): ?>
+                    <p class="proud-subtitle"><?= htmlspecialchars($item['subtitle']) ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($item['description'])): ?>
+                    <p class="proud-desc"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+
+        <?php
+        $lettersHeading = 'A Letter For You 💌';
+        require BASE_PATH . '/views/public/partials/letters.php';
+        ?>
+
+        <?php if (empty($records) && empty($letters)): ?>
+        <div class="empty-public">
+            <p>Something special is coming here soon 💞</p>
+        </div>
+        <?php endif; ?>
 
         <div class="back-home">
             <a href="<?= BASE_URL ?>/" class="btn-back">← Back to Home</a>

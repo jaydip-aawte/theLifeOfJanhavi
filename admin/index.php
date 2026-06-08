@@ -42,6 +42,8 @@ require_once BASE_PATH . '/controllers/WishVideoAdminController.php';
 require_once BASE_PATH . '/controllers/SapkalAdminController.php';
 require_once BASE_PATH . '/controllers/JaydipAdminController.php';
 require_once BASE_PATH . '/controllers/ChatpatiAdminController.php';
+require_once BASE_PATH . '/controllers/LettersAdminController.php';
+require_once BASE_PATH . '/controllers/QuotesAdminController.php';
 require_once BASE_PATH . '/controllers/SearchAdminController.php';
 require_once BASE_PATH . '/controllers/ImportAdminController.php';
 
@@ -63,6 +65,8 @@ $pages = [
     'sapkal'      => ['SapkalAdminController', 'handle'],
     'jaydip'      => ['JaydipAdminController', 'handle'],
     'chatpati'    => ['ChatpatiAdminController', 'handle'],
+    'letters'     => ['LettersAdminController', 'handle'],
+    'quotes'      => ['QuotesAdminController', 'handle'],
     'search'      => ['SearchAdminController', 'index'],
     'import'      => ['ImportAdminController', 'index'],
 ];

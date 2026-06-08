@@ -25,8 +25,8 @@ ob_start();
                 <div class="search-result-card">
                     <div class="search-result-body">
                         <?php
-                        $title = $row['title'] ?? $row['name'] ?? '—';
-                        $desc = $row['description'] ?? $row['wish_text'] ?? $row['meme_text'] ?? '';
+                        $title = $row['title'] ?? $row['name'] ?? $row['quote_text'] ?? '—';
+                        $desc = $row['description'] ?? $row['wish_text'] ?? $row['meme_text'] ?? $row['letter_content'] ?? $row['author_text'] ?? '';
                         ?>
                         <strong><?= htmlspecialchars($title) ?></strong>
                         <?php if ($desc): ?>

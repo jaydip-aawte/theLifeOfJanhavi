@@ -38,6 +38,9 @@ $formAction = $isEdit
                     <?php endforeach; ?>
                 </select>
 
+            <?php elseif ($type === 'date'): ?>
+                <input type="date" id="field_<?= $name ?>" name="<?= $name ?>" class="form-control" value="<?= htmlspecialchars($value) ?>" <?= $required ? 'required' : '' ?>>
+
             <?php elseif ($type === 'file'): ?>
                 <?php if ($isEdit && !empty($value)): ?>
                 <div class="current-file">

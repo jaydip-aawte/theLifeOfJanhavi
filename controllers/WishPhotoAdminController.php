@@ -13,6 +13,7 @@ class WishPhotoAdminController extends ContentAdminController
     protected array $fields = [
         ['name' => 'name',       'label' => 'Friend Name',  'type' => 'text',     'required' => true],
         ['name' => 'wish_text',  'label' => 'Wish Message', 'type' => 'textarea', 'required' => false],
+        ['name' => 'wish_date',  'label' => 'Date',         'type' => 'date',     'required' => false],
         ['name' => 'photo_path', 'label' => 'Photo',        'type' => 'file',     'required' => false],
     ];
 

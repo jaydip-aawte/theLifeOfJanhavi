@@ -84,6 +84,16 @@ $appConfig = require BASE_PATH . '/config/app.php';
                     </a>
                 </li>
                 <li class="admin-nav-item">
+                    <a href="<?= BASE_URL ?>/admin/?page=letters" class="admin-nav-link <?= ($activePage ?? '') === 'letters' ? 'active' : '' ?>">
+                        <span class="nav-icon">💌</span> Open When Letters
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="<?= BASE_URL ?>/admin/?page=quotes" class="admin-nav-link <?= ($activePage ?? '') === 'quotes' ? 'active' : '' ?>">
+                        <span class="nav-icon">💭</span> Emotional Quotes
+                    </a>
+                </li>
+                <li class="admin-nav-item">
                     <a href="<?= BASE_URL ?>/admin/?page=import" class="admin-nav-link <?= ($activePage ?? '') === 'import' ? 'active' : '' ?>">
                         <span class="nav-icon">📥</span> Import Data
                     </a>
