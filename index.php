@@ -40,10 +40,15 @@ $route = isset($_GET['route']) ? trim($_GET['route'], '/') : '';
 
 // Public route map
 $routes = [
-    ''                 => ['HomeController', 'index'],
-    'home'             => ['HomeController', 'index'],
-    'api/landing-data' => ['ApiController', 'landingData'],
-    'api/menu-data'    => ['ApiController', 'menuData'],
+    ''                  => ['HomeController', 'index'],
+    'home'              => ['HomeController', 'index'],
+    'wish-photo'        => ['PublicController', 'wishPhoto'],
+    'wish-video'        => ['PublicController', 'wishVideo'],
+    'janhavi-sapkal'    => ['PublicController', 'janhaviSapkal'],
+    'janhavi-jaydip'    => ['PublicController', 'janhaviJaydip'],
+    'chatpati-janhavi'  => ['PublicController', 'chatpatiJanhavi'],
+    'api/landing-data'  => ['ApiController', 'landingData'],
+    'api/menu-data'     => ['ApiController', 'menuData'],
 ];
 
 // Redirect /admin to the physical admin front controller
@@ -55,6 +60,7 @@ if ($route === 'admin' || str_starts_with($route, 'admin/')) {
 // Load controllers
 require_once __DIR__ . '/controllers/HomeController.php';
 require_once __DIR__ . '/controllers/ApiController.php';
+require_once __DIR__ . '/controllers/PublicController.php';
 
 // Dispatch
 if (array_key_exists($route, $routes)) {

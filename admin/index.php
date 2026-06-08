@@ -36,10 +36,19 @@ require_once BASE_PATH . '/config/session.php';
 // Load admin controllers
 require_once BASE_PATH . '/controllers/AuthController.php';
 require_once BASE_PATH . '/controllers/AdminController.php';
+require_once BASE_PATH . '/controllers/ContentAdminController.php';
+require_once BASE_PATH . '/controllers/WishPhotoAdminController.php';
+require_once BASE_PATH . '/controllers/WishVideoAdminController.php';
+require_once BASE_PATH . '/controllers/SapkalAdminController.php';
+require_once BASE_PATH . '/controllers/JaydipAdminController.php';
+require_once BASE_PATH . '/controllers/ChatpatiAdminController.php';
+require_once BASE_PATH . '/controllers/SearchAdminController.php';
+require_once BASE_PATH . '/controllers/ImportAdminController.php';
 
 // Page dispatch map
 $page = isset($_GET['page']) ? trim($_GET['page']) : 'dashboard';
 
+// Simple dispatch (controller, method) — or 'handle' for content CRUD controllers
 $pages = [
     'login'       => ['AuthController', 'login'],
     'logout'      => ['AuthController', 'logout'],
@@ -49,6 +58,13 @@ $pages = [
     'music'       => ['AdminController', 'music'],
     'settings'    => ['AdminController', 'settings'],
     'credentials' => ['AdminController', 'credentials'],
+    'wish-photo'  => ['WishPhotoAdminController', 'handle'],
+    'wish-video'  => ['WishVideoAdminController', 'handle'],
+    'sapkal'      => ['SapkalAdminController', 'handle'],
+    'jaydip'      => ['JaydipAdminController', 'handle'],
+    'chatpati'    => ['ChatpatiAdminController', 'handle'],
+    'search'      => ['SearchAdminController', 'index'],
+    'import'      => ['ImportAdminController', 'index'],
 ];
 
 if (!array_key_exists($page, $pages)) {
