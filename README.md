@@ -95,10 +95,12 @@ project-root/
    'username' => 'youruser_dbuser',
    'password' => 'your-db-password',
    ```
-4. **Set the base URL** in `config/app.php` (`base_url`) to your domain, e.g. `https://janhavi.example.com`.
+4. **Base URL** — nothing to configure. The app **auto-detects** scheme + host + sub-folder from the request, so it works at a domain root, in a sub-folder (e.g. `https://site.com/janhavi`), or on XAMPP (`http://localhost/theLifeOfJanhavi`) with no edits. To force a fixed URL, set the `APP_URL` env var (it always overrides auto-detection).
 5. **Upload**: zip the project contents and upload to `public_html` (or a subfolder) via cPanel *File Manager* → *Upload* → *Extract*.
 6. **Permissions**: make `assets/uploads/` and `assets/music/` writable (`chmod 755`).
 7. Visit your domain. 🎉
+
+> 📦 **Fully self-contained** — all fonts (Poppins, Playfair Display, Dancing Script, Noto Sans Devanagari) are bundled in `assets/fonts/` and loaded locally. No internet/CDN is required at runtime, so styling renders correctly offline and on any machine.
 
 ### Default admin login
 
@@ -117,6 +119,9 @@ Password: admin123
 
 ## 🖥️ Local Development
 
+**XAMPP / Apache (recommended for cPanel parity):** drop the folder into `htdocs/` (e.g. `htdocs/theLifeOfJanhavi`), start Apache + MySQL, import the SQL files via phpMyAdmin, then open `http://localhost/theLifeOfJanhavi/`. The base URL auto-detects the sub-folder — CSS/JS/images load correctly with no config.
+
+**PHP built-in server:**
 ```bash
 # From the project root
 php -S localhost:8000 router.php

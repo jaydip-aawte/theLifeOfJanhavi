@@ -30,11 +30,7 @@ $meta = $appConfig['meta'];
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💓</text></svg>">
 
-    <!-- Styles -->
+    <!-- Styles (fonts self-hosted via style.css → assets/fonts/fonts.css) -->
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
-
-    <!-- Preconnect for fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
