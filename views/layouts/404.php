@@ -7,6 +7,8 @@ $appConfig = require BASE_PATH . '/config/app.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found — <?= htmlspecialchars($appConfig['meta']['title']) ?></title>
+    <!-- Bootstrap 5 (self-hosted, no CDN) -->
+    <link rel="stylesheet" href="<?= rtrim($appConfig['base_url'], '/') ?>/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= rtrim($appConfig['base_url'], '/') ?>/assets/css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💓</text></svg>">
 </head>

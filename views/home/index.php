@@ -55,13 +55,15 @@
         <div class="container">
             <h2 class="section-title">Explore Her World ✨</h2>
 
-            <div class="nav-cards">
+            <div class="row g-4 justify-content-center nav-cards">
                 <?php foreach ($menus as $index => $menu): ?>
-                <a href="<?= htmlspecialchars($menu['route']) ?>" class="nav-card" style="animation-delay: <?= $index * 0.1 ?>s;">
-                    <span class="nav-card-rank"><?= (int)($menu['rank'] ?? $index + 1) ?></span>
-                    <span class="nav-card-icon"><?= $menu['icon'] ?? '📌' ?></span>
-                    <h3 class="nav-card-title"><?= htmlspecialchars($menu['module_name']) ?></h3>
-                </a>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="<?= htmlspecialchars($menu['route']) ?>" class="nav-card h-100" style="animation-delay: <?= $index * 0.1 ?>s;">
+                        <span class="nav-card-rank"><?= (int)($menu['rank'] ?? $index + 1) ?></span>
+                        <span class="nav-card-icon"><?= $menu['icon'] ?? '📌' ?></span>
+                        <h3 class="nav-card-title"><?= htmlspecialchars($menu['module_name']) ?></h3>
+                    </a>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>

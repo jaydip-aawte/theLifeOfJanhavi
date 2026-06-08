@@ -26,6 +26,6 @@ Thumbs.db
 .idea/
 .vscode/
 
-# PHP
-vendor/
+# PHP (Composer dependencies only — NOT the bundled front-end assets in assets/vendor/)
+/vendor/
 composer.lock

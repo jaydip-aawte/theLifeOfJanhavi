@@ -2,37 +2,49 @@
 ob_start();
 ?>
 
-<!-- Dashboard Stats -->
-<div class="dashboard-grid">
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">🖼️</div>
-        <div class="dashboard-card-value"><?= (int)($stats['total_photos'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Total Photos</div>
+<!-- Dashboard Stats (Bootstrap responsive grid) -->
+<div class="row g-3 dashboard-grid">
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">🖼️</div>
+            <div class="dashboard-card-value"><?= (int)($stats['total_photos'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Total Photos</div>
+        </div>
     </div>
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">🎬</div>
-        <div class="dashboard-card-value"><?= (int)($stats['total_videos'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Total Videos</div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">🎬</div>
+            <div class="dashboard-card-value"><?= (int)($stats['total_videos'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Total Videos</div>
+        </div>
     </div>
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">🎁</div>
-        <div class="dashboard-card-value"><?= (int)($stats['total_wishes'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Total Wishes</div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">🎁</div>
+            <div class="dashboard-card-value"><?= (int)($stats['total_wishes'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Total Wishes</div>
+        </div>
     </div>
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">📋</div>
-        <div class="dashboard-card-value"><?= (int)($stats['total_modules'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Total Modules</div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">📋</div>
+            <div class="dashboard-card-value"><?= (int)($stats['total_modules'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Total Modules</div>
+        </div>
     </div>
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">✨</div>
-        <div class="dashboard-card-value"><?= (int)($stats['active_content'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Active Content</div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">✨</div>
+            <div class="dashboard-card-value"><?= (int)($stats['active_content'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Active Content</div>
+        </div>
     </div>
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">📥</div>
-        <div class="dashboard-card-value" style="font-size: 1rem;"><?= $stats['last_import'] ? htmlspecialchars($stats['last_import']) : 'Never' ?></div>
-        <div class="dashboard-card-label">Last Import</div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">📥</div>
+            <div class="dashboard-card-value" style="font-size: 1rem;"><?= $stats['last_import'] ? htmlspecialchars($stats['last_import']) : 'Never' ?></div>
+            <div class="dashboard-card-label">Last Import</div>
+        </div>
     </div>
 </div>
 

@@ -7,6 +7,8 @@ $appConfig = require BASE_PATH . '/config/app.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle ?? 'Admin') ?> — Admin Panel</title>
+    <!-- Bootstrap 5 (self-hosted, no CDN) -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/admin.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💓</text></svg>">
@@ -142,6 +144,8 @@ $appConfig = require BASE_PATH . '/config/app.php';
         </main>
     </div>
 
+    <!-- Bootstrap 5 bundle (self-hosted) -->
+    <script src="<?= BASE_URL ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleSidebar() {
             document.getElementById('adminSidebar').classList.toggle('open');

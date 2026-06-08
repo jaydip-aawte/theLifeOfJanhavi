@@ -6,26 +6,28 @@
         <p class="page-subtitle marathi">व्हिडीओ शुभेच्छा 🎥</p>
 
         <?php if (!empty($records)): ?>
-        <div class="video-grid">
+        <div class="row g-4 justify-content-center video-grid">
             <?php foreach ($records as $video): ?>
-            <div class="video-card">
-                <?php if (!empty($video['youtube_embed_url'])): ?>
-                <div class="video-embed">
-                    <iframe
-                        data-src="<?= htmlspecialchars($video['youtube_embed_url']) ?>"
-                        title="<?= htmlspecialchars($video['name']) ?>"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                        loading="lazy"
-                        class="lazy-iframe"></iframe>
-                </div>
-                <?php endif; ?>
-                <div class="video-body">
-                    <h3 class="video-name"><?= htmlspecialchars($video['name']) ?></h3>
-                    <?php if (!empty($video['wish_text'])): ?>
-                    <p class="video-text"><?= nl2br(htmlspecialchars($video['wish_text'])) ?></p>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-card h-100">
+                    <?php if (!empty($video['youtube_embed_url'])): ?>
+                    <div class="video-embed">
+                        <iframe
+                            data-src="<?= htmlspecialchars($video['youtube_embed_url']) ?>"
+                            title="<?= htmlspecialchars($video['name']) ?>"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy"
+                            class="lazy-iframe"></iframe>
+                    </div>
                     <?php endif; ?>
+                    <div class="video-body">
+                        <h3 class="video-name"><?= htmlspecialchars($video['name']) ?></h3>
+                        <?php if (!empty($video['wish_text'])): ?>
+                        <p class="video-text"><?= nl2br(htmlspecialchars($video['wish_text'])) ?></p>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
