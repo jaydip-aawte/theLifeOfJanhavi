@@ -8,6 +8,8 @@ require_once __DIR__ . '/../models/WishVideo.php';
 require_once __DIR__ . '/../models/JanhaviSapkal.php';
 require_once __DIR__ . '/../models/JanhaviJaydip.php';
 require_once __DIR__ . '/../models/ChatpatiJanhavi.php';
+require_once __DIR__ . '/../models/OpenWhenLetter.php';
+require_once __DIR__ . '/../models/EmotionalQuote.php';
 require_once __DIR__ . '/../models/ImportLog.php';
 
 class AdminController extends BaseController
@@ -29,12 +31,15 @@ class AdminController extends BaseController
             $sapkal = new JanhaviSapkal();
             $jaydip = new JanhaviJaydip();
             $chatpati = new ChatpatiJanhavi();
+            $letters = new OpenWhenLetter();
+            $quotes = new EmotionalQuote();
             $importLog = new ImportLog();
 
             $totalPhotos = $wishPhoto->countAll();
             $totalVideos = $wishVideo->countAll();
             $activeContent = $wishPhoto->countActive() + $wishVideo->countActive()
-                + $sapkal->countActive() + $jaydip->countActive() + $chatpati->countActive();
+                + $sapkal->countActive() + $jaydip->countActive() + $chatpati->countActive()
+                + $letters->countActive() + $quotes->countActive();
 
             $recentImport = $importLog->recent(1);
             $lastImport = !empty($recentImport) ? $recentImport[0]['created_at'] : null;
@@ -44,6 +49,8 @@ class AdminController extends BaseController
                 'total_videos'   => $totalVideos,
                 'total_wishes'   => $totalPhotos + $totalVideos,
                 'total_modules'  => $menuModel->count("status = 1"),
+                'total_letters'  => $letters->countAll(),
+                'total_quotes'   => $quotes->countAll(),
                 'active_content' => $activeContent,
                 'last_import'    => $lastImport,
             ];
@@ -53,6 +60,8 @@ class AdminController extends BaseController
                 'total_videos'   => 0,
                 'total_wishes'   => 0,
                 'total_modules'  => 0,
+                'total_letters'  => 0,
+                'total_quotes'   => 0,
                 'active_content' => 0,
                 'last_import'    => null,
             ];
@@ -86,9 +95,29 @@ class AdminController extends BaseController
     public function settings(): void
     {
         $this->requireAdmin();
+
+        $decorKeys = ['decor_hearts', 'decor_flowers', 'decor_sparkles', 'decor_stars'];
+        $setting = new Setting();
+        $flash = '';
+
+        if ($this->isPost() && $this->validateCsrf()) {
+            foreach ($decorKeys as $key) {
+                $setting->set($key, isset($_POST[$key]) ? '1' : '0');
+            }
+            $flash = 'Decoration settings saved! 🌸';
+        }
+
+        $decor = [];
+        foreach ($decorKeys as $key) {
+            $decor[$key] = $setting->get($key, '0') === '1';
+        }
+
         $this->view('admin/settings', [
             'pageTitle'  => 'Settings',
             'activePage' => 'settings',
+            'decor'      => $decor,
+            'csrfField'  => $this->csrfField(),
+            'flash'      => $flash,
         ]);
     }
 

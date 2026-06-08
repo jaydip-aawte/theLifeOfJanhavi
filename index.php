@@ -47,8 +47,10 @@ $routes = [
     'janhavi-sapkal'    => ['PublicController', 'janhaviSapkal'],
     'janhavi-jaydip'    => ['PublicController', 'janhaviJaydip'],
     'chatpati-janhavi'  => ['PublicController', 'chatpatiJanhavi'],
+    'love-treasure'     => ['PublicController', 'loveTreasure'],
     'api/landing-data'  => ['ApiController', 'landingData'],
     'api/menu-data'     => ['ApiController', 'menuData'],
+    'api/random-quote'  => ['ApiController', 'randomQuote'],
 ];
 
 // Redirect /admin to the physical admin front controller

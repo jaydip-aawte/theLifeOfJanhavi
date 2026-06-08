@@ -34,6 +34,20 @@ ob_start();
     </div>
     <div class="col-6 col-md-4 col-xl-2">
         <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">💌</div>
+            <div class="dashboard-card-value"><?= (int)($stats['total_letters'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Open When Letters</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
+            <div class="dashboard-card-icon">💭</div>
+            <div class="dashboard-card-value"><?= (int)($stats['total_quotes'] ?? 0) ?></div>
+            <div class="dashboard-card-label">Emotional Quotes</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+        <div class="dashboard-card h-100">
             <div class="dashboard-card-icon">✨</div>
             <div class="dashboard-card-value"><?= (int)($stats['active_content'] ?? 0) ?></div>
             <div class="dashboard-card-label">Active Content</div>
@@ -81,6 +95,14 @@ ob_start();
         <a href="<?= BASE_URL ?>/admin/?page=chatpati" class="quick-link-card">
             <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌶️</div>
             <div style="font-weight: 500; font-size: 0.85rem;">Chatpati Janhavi</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=letters" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💌</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Open When Letters</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=quotes" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💭</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Emotional Quotes</div>
         </a>
         <a href="<?= BASE_URL ?>/admin/?page=import" class="quick-link-card">
             <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📥</div>

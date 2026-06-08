@@ -5,6 +5,7 @@ require_once __DIR__ . '/../models/WishVideo.php';
 require_once __DIR__ . '/../models/JanhaviSapkal.php';
 require_once __DIR__ . '/../models/JanhaviJaydip.php';
 require_once __DIR__ . '/../models/ChatpatiJanhavi.php';
+require_once __DIR__ . '/../models/OpenWhenLetter.php';
 
 class PublicController extends BaseController
 {
@@ -52,8 +53,21 @@ class PublicController extends BaseController
 
     public function janhaviJaydip(): void
     {
+        try {
+            $model = new JanhaviJaydip();
+            $records = $model->activeRecords();
+        } catch (\Throwable $e) {
+            $records = [];
+        }
+        try {
+            $letters = (new OpenWhenLetter())->byCategories(['missing_me']);
+        } catch (\Throwable $e) {
+            $letters = [];
+        }
         $this->view('public/janhavi-jaydip', [
-            'pageTitle' => 'Love Treasure 💎',
+            'records'   => $records,
+            'letters'   => $letters,
+            'pageTitle' => 'Janhavi Jaydip 💕',
         ]);
     }
 
@@ -65,9 +79,22 @@ class PublicController extends BaseController
         } catch (\Throwable $e) {
             $records = [];
         }
+        try {
+            $letters = (new OpenWhenLetter())->byCategories(['sad', 'angry', 'happy']);
+        } catch (\Throwable $e) {
+            $letters = [];
+        }
         $this->view('public/chatpati-janhavi', [
             'records'   => $records,
+            'letters'   => $letters,
             'pageTitle' => 'Chatpati Janhavi 🌶️',
+        ]);
+    }
+
+    public function loveTreasure(): void
+    {
+        $this->view('public/love-treasure', [
+            'pageTitle' => 'Love Treasure 💎',
         ]);
     }
 }

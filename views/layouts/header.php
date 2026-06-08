@@ -34,5 +34,7 @@ $meta = $appConfig['meta'];
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Styles (fonts self-hosted via style.css → assets/fonts/fonts.css). Loaded AFTER Bootstrap so the scrapbook theme wins. -->
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+    <!-- Phase 3 scrapbook components (paper notes, envelopes, transitions, decorations) -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/scrapbook.css">
 </head>
 <body>
