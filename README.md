@@ -22,7 +22,32 @@ A digital emotional scrapbook built with love for Janhavi — a handcrafted digi
 | Marathi + Emoji support (`utf8mb4`, Noto Sans Devanagari) | ✅ |
 | SEO meta + Open Graph + lazy loading (Intersection Observer) | ✅ |
 
-Modules deferred to **Phase 2**: Quiz, Wish modules, Love Treasure, Fun Area, Suggestions, advanced CRUD, Excel import.
+---
+
+## 🎨 Phase 2 — Content Management System
+
+Full admin-managed CMS extending the Phase 1 architecture. Every module supports Create / Read / Update / Delete, **soft delete**, active/inactive toggle, and **rank ordering** (move up/down). All forms use CSRF + server-side validation + PDO prepared statements + `utf8mb4`.
+
+| Module | Admin CRUD | Public page | Style |
+|--------|-----------|-------------|-------|
+| Wish Photo Wall (`wish_photo`) | ✅ | `/wish-photo` | Polaroid cards |
+| Wish Video Wall (`wish_video`) | ✅ | `/wish-video` | YouTube grid (lazy iframe) |
+| Janhavi Sapkal (`janhavi_sapkal`) | ✅ | `/janhavi-sapkal` | Proud-of-you cards |
+| Janhavi Jaydip (`janhavi_jaydip`) | ✅ | `/janhavi-jaydip` | Placeholder (locked later) |
+| Chatpati Janhavi (`chatpati_janhavi`) | ✅ | `/chatpati-janhavi` | Meme cards |
+
+Cross-cutting features:
+
+- **File upload system** — `UploadService` validates type (`jpg/jpeg/png/webp`) + size, generates a unique filename, stores files in `assets/uploads/{photos,videos,hero,profile,memes}/`, and saves only the relative path in the DB.
+- **Statistics dashboard** — Total Photos / Videos / Wishes / Modules, Active Content count, Last Import.
+- **Admin search** — searches across all content modules (English / Marathi / Emoji).
+- **Bulk actions** — activate / deactivate / delete selected records.
+- **Import framework skeleton** — `ImportService` + controller + upload screen + `import_log` table (extensible; full Excel parsing deferred to a later phase).
+- All public pages load **dynamically from the database** (no hardcoded content) with `loading="lazy"` + Intersection Observer.
+
+**Phase 2 DB tables**: `wish_photo`, `wish_video`, `janhavi_sapkal`, `janhavi_jaydip`, `chatpati_janhavi`, `import_log` — each with `id`, `status`, `rank`, `created_at`, `updated_at` (+ `deleted_at` for soft delete). Import with `database/phase2_schema.sql` then `database/phase2_seed.sql`.
+
+Modules deferred to **future phases**: Quiz, Secret Code, Love Treasure unlock logic, Suggestions, Games, Envelope Letters, Birthday Cake, animations.
 
 ---
 

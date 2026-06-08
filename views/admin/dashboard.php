@@ -5,64 +5,75 @@ ob_start();
 <!-- Dashboard Stats -->
 <div class="dashboard-grid">
     <div class="dashboard-card">
-        <div class="dashboard-card-icon">📋</div>
-        <div class="dashboard-card-value"><?= (int)($stats['total_menus'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Active Menu Items</div>
-    </div>
-    <div class="dashboard-card">
-        <div class="dashboard-card-icon">🏠</div>
-        <div class="dashboard-card-value"><?= (int)($stats['landing_pages'] ?? 0) ?></div>
-        <div class="dashboard-card-label">Landing Pages</div>
-    </div>
-    <div class="dashboard-card">
         <div class="dashboard-card-icon">🖼️</div>
-        <div class="dashboard-card-value">0</div>
-        <div class="dashboard-card-label">Photos Uploaded</div>
+        <div class="dashboard-card-value"><?= (int)($stats['total_photos'] ?? 0) ?></div>
+        <div class="dashboard-card-label">Total Photos</div>
     </div>
     <div class="dashboard-card">
-        <div class="dashboard-card-icon">🎵</div>
-        <div class="dashboard-card-value">0</div>
-        <div class="dashboard-card-label">Music Tracks</div>
+        <div class="dashboard-card-icon">🎬</div>
+        <div class="dashboard-card-value"><?= (int)($stats['total_videos'] ?? 0) ?></div>
+        <div class="dashboard-card-label">Total Videos</div>
+    </div>
+    <div class="dashboard-card">
+        <div class="dashboard-card-icon">🎁</div>
+        <div class="dashboard-card-value"><?= (int)($stats['total_wishes'] ?? 0) ?></div>
+        <div class="dashboard-card-label">Total Wishes</div>
+    </div>
+    <div class="dashboard-card">
+        <div class="dashboard-card-icon">📋</div>
+        <div class="dashboard-card-value"><?= (int)($stats['total_modules'] ?? 0) ?></div>
+        <div class="dashboard-card-label">Total Modules</div>
+    </div>
+    <div class="dashboard-card">
+        <div class="dashboard-card-icon">✨</div>
+        <div class="dashboard-card-value"><?= (int)($stats['active_content'] ?? 0) ?></div>
+        <div class="dashboard-card-label">Active Content</div>
+    </div>
+    <div class="dashboard-card">
+        <div class="dashboard-card-icon">📥</div>
+        <div class="dashboard-card-value" style="font-size: 1rem;"><?= $stats['last_import'] ? htmlspecialchars($stats['last_import']) : 'Never' ?></div>
+        <div class="dashboard-card-label">Last Import</div>
     </div>
 </div>
 
-<!-- Quick Info -->
+<!-- Quick Search -->
 <div class="skeleton-section">
-    <h3>🌸 Welcome to TheLifeOfJanhavi Admin</h3>
-    <p style="color: var(--text-medium); line-height: 1.8;">
-        This is your admin dashboard. From here you can manage the entire website —
-        landing page content, navigation menus, music, photos, and more.
-    </p>
-    <p style="color: var(--text-light); margin-top: 1rem; font-size: 0.85rem;">
-        <strong>Phase 1</strong> includes: Landing page management, menu system, music controls, and basic settings.
-        <br>More modules (Wish photos/videos, Fun Area, Quiz, etc.) are coming in Phase 2.
-    </p>
+    <h3>🔍 Quick Search</h3>
+    <form method="get" action="<?= BASE_URL ?>/admin/?page=search" class="search-form" style="margin-top: 1rem;">
+        <input type="hidden" name="page" value="search">
+        <input type="text" name="q" class="form-control search-input" placeholder="Search photos, videos, content (English, Marathi, Emoji)...">
+        <button type="submit" class="btn-primary">Search</button>
+    </form>
 </div>
 
-<!-- Coming Soon Modules -->
+<!-- Quick Links -->
 <div class="skeleton-section">
-    <h3>🚀 Upcoming Modules</h3>
+    <h3>🚀 Content Modules</h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-        <div style="padding: 1rem; background: var(--cream); border-radius: var(--radius-sm); text-align: center;">
+        <a href="<?= BASE_URL ?>/admin/?page=wish-photo" class="quick-link-card">
             <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎁</div>
-            <div style="font-weight: 500; font-size: 0.85rem;">Wish For Janhavi</div>
-            <span class="coming-soon-badge" style="margin-top: 0.5rem;">Phase 2</span>
-        </div>
-        <div style="padding: 1rem; background: var(--cream); border-radius: var(--radius-sm); text-align: center;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💎</div>
-            <div style="font-weight: 500; font-size: 0.85rem;">Love Treasure</div>
-            <span class="coming-soon-badge" style="margin-top: 0.5rem;">Phase 2</span>
-        </div>
-        <div style="padding: 1rem; background: var(--cream); border-radius: var(--radius-sm); text-align: center;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎮</div>
-            <div style="font-weight: 500; font-size: 0.85rem;">Fun Zone</div>
-            <span class="coming-soon-badge" style="margin-top: 0.5rem;">Phase 2</span>
-        </div>
-        <div style="padding: 1rem; background: var(--cream); border-radius: var(--radius-sm); text-align: center;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🧩</div>
-            <div style="font-weight: 500; font-size: 0.85rem;">Quiz</div>
-            <span class="coming-soon-badge" style="margin-top: 0.5rem;">Phase 2</span>
-        </div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Wish Photos</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=wish-video" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎬</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Wish Videos</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=sapkal" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👩</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Janhavi Sapkal</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=jaydip" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💕</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Janhavi Jaydip</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=chatpati" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌶️</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Chatpati Janhavi</div>
+        </a>
+        <a href="<?= BASE_URL ?>/admin/?page=import" class="quick-link-card">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📥</div>
+            <div style="font-weight: 500; font-size: 0.85rem;">Import Data</div>
+        </a>
     </div>
 </div>
 

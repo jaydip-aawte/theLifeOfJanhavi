@@ -48,38 +48,47 @@ $appConfig = require BASE_PATH . '/config/app.php';
                     </a>
                 </li>
 
+                <li class="admin-nav-item">
+                    <a href="<?= BASE_URL ?>/admin/?page=search" class="admin-nav-link <?= ($activePage ?? '') === 'search' ? 'active' : '' ?>">
+                        <span class="nav-icon">🔍</span> Search
+                    </a>
+                </li>
+
                 <div class="admin-nav-divider"></div>
 
                 <li class="admin-nav-item">
-                    <a href="#" class="admin-nav-link" style="opacity: 0.5; cursor: default;">
+                    <a href="<?= BASE_URL ?>/admin/?page=wish-photo" class="admin-nav-link <?= ($activePage ?? '') === 'wish-photo' ? 'active' : '' ?>">
                         <span class="nav-icon">🎁</span> Wish Photos
-                        <span class="coming-soon-badge">Soon</span>
                     </a>
                 </li>
                 <li class="admin-nav-item">
-                    <a href="#" class="admin-nav-link" style="opacity: 0.5; cursor: default;">
+                    <a href="<?= BASE_URL ?>/admin/?page=wish-video" class="admin-nav-link <?= ($activePage ?? '') === 'wish-video' ? 'active' : '' ?>">
                         <span class="nav-icon">🎬</span> Wish Videos
-                        <span class="coming-soon-badge">Soon</span>
                     </a>
                 </li>
                 <li class="admin-nav-item">
-                    <a href="#" class="admin-nav-link" style="opacity: 0.5; cursor: default;">
+                    <a href="<?= BASE_URL ?>/admin/?page=sapkal" class="admin-nav-link <?= ($activePage ?? '') === 'sapkal' ? 'active' : '' ?>">
                         <span class="nav-icon">👩</span> Janhavi Sapkal
-                        <span class="coming-soon-badge">Soon</span>
                     </a>
                 </li>
                 <li class="admin-nav-item">
-                    <a href="#" class="admin-nav-link" style="opacity: 0.5; cursor: default;">
+                    <a href="<?= BASE_URL ?>/admin/?page=jaydip" class="admin-nav-link <?= ($activePage ?? '') === 'jaydip' ? 'active' : '' ?>">
                         <span class="nav-icon">💕</span> Janhavi Jaydip
-                        <span class="coming-soon-badge">Soon</span>
                     </a>
                 </li>
                 <li class="admin-nav-item">
-                    <a href="#" class="admin-nav-link" style="opacity: 0.5; cursor: default;">
-                        <span class="nav-icon">🌶️</span> Chatpati Ladki
-                        <span class="coming-soon-badge">Soon</span>
+                    <a href="<?= BASE_URL ?>/admin/?page=chatpati" class="admin-nav-link <?= ($activePage ?? '') === 'chatpati' ? 'active' : '' ?>">
+                        <span class="nav-icon">🌶️</span> Chatpati Janhavi
                     </a>
                 </li>
+                <li class="admin-nav-item">
+                    <a href="<?= BASE_URL ?>/admin/?page=import" class="admin-nav-link <?= ($activePage ?? '') === 'import' ? 'active' : '' ?>">
+                        <span class="nav-icon">📥</span> Import Data
+                    </a>
+                </li>
+
+                <div class="admin-nav-divider"></div>
+
                 <li class="admin-nav-item">
                     <a href="#" class="admin-nav-link" style="opacity: 0.5; cursor: default;">
                         <span class="nav-icon">🎮</span> Fun Area
