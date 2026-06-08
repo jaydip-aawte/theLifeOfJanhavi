@@ -1,0 +1,359 @@
+/* =============================================================
+   TheLifeOfJanhavi — Admin Panel Styles
+   ============================================================= */
+
+:root {
+    --admin-sidebar: 260px;
+    --admin-bg: #fdf6f0;
+    --admin-sidebar-bg: #fff;
+    --admin-border: #f3e4db;
+}
+
+/* ---------- Admin Layout ---------- */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--admin-bg);
+}
+
+/* ---------- Sidebar ---------- */
+.admin-sidebar {
+    width: var(--admin-sidebar);
+    background: var(--admin-sidebar-bg);
+    border-right: 1px solid var(--admin-border);
+    padding: 1.5rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.admin-sidebar-brand {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+    margin-bottom: 1rem;
+}
+
+.admin-sidebar-brand h2 {
+    font-family: var(--font-handwritten);
+    font-size: 1.5rem;
+    color: var(--rose);
+}
+
+.admin-sidebar-brand small {
+    color: var(--text-light);
+    font-size: 0.75rem;
+}
+
+.admin-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-nav-item {
+    margin: 2px 0;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.admin-nav-link:hover {
+    background: var(--pink-light);
+    color: var(--rose);
+    border-left-color: var(--rose);
+}
+
+.admin-nav-link.active {
+    background: var(--pink-light);
+    color: var(--rose);
+    border-left-color: var(--rose);
+    font-weight: 600;
+}
+
+.admin-nav-link .nav-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.admin-nav-divider {
+    height: 1px;
+    background: var(--admin-border);
+    margin: 0.75rem 1.5rem;
+}
+
+/* ---------- Main Content ---------- */
+.admin-main {
+    flex: 1;
+    margin-left: var(--admin-sidebar);
+    padding: 2rem;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-header h1 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--text-dark);
+}
+
+.admin-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-medium);
+    font-size: 0.85rem;
+}
+
+/* ---------- Dashboard Cards ---------- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid var(--admin-border);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+}
+
+.dashboard-card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.dashboard-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--rose);
+    font-family: var(--font-heading);
+}
+
+.dashboard-card-label {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* ---------- Skeleton Placeholder ---------- */
+.skeleton-section {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--admin-border);
+    margin-bottom: 1.5rem;
+}
+
+.skeleton-section h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.skeleton-placeholder {
+    background: linear-gradient(90deg, var(--cream) 25%, var(--pink-light) 50%, var(--cream) 75%);
+    background-size: 200% 100%;
+    animation: skeleton 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+    height: 40px;
+    margin-bottom: 0.75rem;
+}
+
+@keyframes skeleton {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.coming-soon-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: var(--lavender);
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Login Page ---------- */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cream);
+    padding: 1rem;
+}
+
+.login-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 3rem 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+}
+
+.login-card h1 {
+    font-family: var(--font-handwritten);
+    color: var(--rose);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.login-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--admin-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+    background: var(--cream);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--pink);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(249, 183, 209, 0.2);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.85rem;
+    background: linear-gradient(135deg, var(--pink), var(--rose));
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(227, 138, 174, 0.3);
+    margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(227, 138, 174, 0.45);
+}
+
+.alert-error {
+    background: #fff0f0;
+    color: #c0392b;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    border: 1px solid #f5c6cb;
+}
+
+/* ---------- Mobile Toggle ---------- */
+.admin-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    width: 42px;
+    height: 42px;
+    background: var(--white);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .admin-main {
+        margin-left: 0;
+        padding: 1.5rem 1rem;
+        padding-top: 4rem;
+    }
+
+    .admin-toggle {
+        display: flex;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .login-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

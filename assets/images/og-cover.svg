@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F9B7D1"/>
+      <stop offset="50%" stop-color="#CDB4DB"/>
+      <stop offset="100%" stop-color="#FFD7C2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <text x="50%" y="42%" font-size="90" text-anchor="middle" font-family="serif" fill="#fff">💓 TheLifeOfJanhavi 💓</text>
+  <text x="50%" y="60%" font-size="44" text-anchor="middle" font-family="serif" fill="#fff">तू खूप खास आहेस 🌸</text>
+</svg>

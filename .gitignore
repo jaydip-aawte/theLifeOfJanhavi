@@ -1,0 +1,20 @@
+# Environment / local config
+.env
+config/local.php
+
+# Uploaded content (keep folders, ignore files)
+assets/uploads/*
+!assets/uploads/.gitkeep
+assets/music/*
+!assets/music/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# PHP
+vendor/
+composer.lock
